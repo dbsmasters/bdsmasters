@@ -2,7 +2,7 @@
 
 The current project is implemented in the context of the course "Big Data Management Systems" taught by Prof. Chatziantoniou in the Department of Management Science and Technology (AUEB). The aim of the project is to familiarize the students with big data management systems such as Hadoop, Redis, MongoDB and Neo4j.
 
-[![Code Health](https://landscape.io/github/dbsmasters/bdsmasters/master/landscape.svg?style=flat)](https://landscape.io/github/dbsmasters/bdsmasters/master)
+[![Code Health](https://landscape.io/github/dbsmasters/bdsmasters/master/landscape.svg?style=flat-square)](https://landscape.io/github/dbsmasters/bdsmasters/master)
 
 ### 1st Assignment - k-means algorithm implementation on Hadoop
 1. [Assignment Description](kmeans_mapreduce/Proj1_Hadoop_Description.pdf) 

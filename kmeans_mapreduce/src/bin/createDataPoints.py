@@ -1,8 +1,10 @@
+# pylint: disable=invalid-name, anomalous-backslash-in-string, abstract-method
+
 """createDataPoints.py: Generate data points for clustering."""
 
 import argparse
-import matplotlib.pyplot as plt
 import os
+import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.datasets.samples_generator import make_blobs
 
@@ -10,9 +12,12 @@ __author__ = "Stratos Gounidellis, Lamprini Koutsokera"
 __copyright__ = "Copyright 2017, BDSMasters"
 
 
-class DataGenerator():
+class DataGenerator(object):
+    """Implement method to generate data points.
+    """
 
-    def generateData(self, points, dataFile):
+    @staticmethod
+    def generateData(points, dataFile):
         """Generate the input data points.
 
         :param self: An instance of the class DataGenerator.
@@ -35,7 +40,7 @@ class DataGenerator():
 
 
 if __name__ == "__main__":
-    parser = argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument("dataFile", type=str,
                         help="File to save the generated data points.")

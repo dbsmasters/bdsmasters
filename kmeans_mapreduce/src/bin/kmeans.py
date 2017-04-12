@@ -1,36 +1,43 @@
+# pylint: disable=invalid-name, anomalous-backslash-in-string
+
 """kmeans.py: Run the k-means algorithm."""
 
 import argparse
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 import os
 import random
 import re
 import sys
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 sys.tracebacklimit = 0
 
 __author__ = "Stratos Gounidellis, Lamprini Koutsokera"
 __copyright__ = "Copyright 2017, BDSMasters"
 
 
-class KmeansRunner():
+class KmeansRunner(object):
+    """Implement basic methods needed to support
+        k-means algorithm.
+    """
 
-    def retrieveData(self, file):
+    @staticmethod
+    def retrieveData(inputFile):
         """Retrieve the data points from the input file.
 
         :param self: An instance of the class KmeansRunner.
-        :param file: A file with the input data.
+        :param inputFile: A file with the input data.
         :return: An array with the input data points.
         """
-        df_points = pd.read_csv(file, header=None, names=["x", "y"], sep=" ")
-        if (len(df_points.index) < 1):
+        df_points = pd.read_csv(
+            inputFile, header=None, names=["x", "y"], sep=" ")
+        if len(df_points.index) < 1:
             raise Exception("The input file is empty!")
         data = [tuple(row) for row in df_points.values]
         points = np.array([data_point for data_point in data])
         return points
 
-    def initialCentroids(self, file, nclusters):
+    def initialCentroids(self, inputFile, nclusters):
         """Calculate the initial centroids to be used by the k-means
             clustering algorithm.
 
@@ -39,17 +46,18 @@ class KmeansRunner():
         :param nclusters: The number of clusters.
         :return: A list with the initial centroids.
         """
-        points = self.retrieveData(file)
+        points = self.retrieveData(inputFile)
         initial_centroids = [list(random.choice(points))]
         dist = []
         if nclusters < 2:
             raise Exception("Error the number of clusters should be" +
                             " greater than or equal to 2!")
         for i in range(2, nclusters + 1):
-            dist.append([np.linalg.norm(np.array(point) -
-                        initial_centroids[i - 2])**2 for point in points])
+            dist.append(
+                [np.linalg.norm(np.array(point) - initial_centroids[i - 2])**2
+                 for point in points])
             min_dist = dist[0]
-            if (len(dist) > 1):
+            if len(dist) > 1:
                 min_dist = np.minimum(
                     min_dist, (dist[index] for index in range(1, len(dist))))
 
@@ -63,14 +71,15 @@ class KmeansRunner():
 
         return initial_centroids
 
-    def retrieveCentroids(self, file):
+    @staticmethod
+    def retrieveCentroids(centroidsfile):
         """Retrieve the centroids coordinated from the centroids file.
 
         :param self: An instance of the class KmeansRunner.
-        :param file: A file with the centroids.
+        :param centroidsFile: A file with the centroids.
         :return: A list with the centroids.
         """
-        with open(file, "r") as inputFile:
+        with open(centroidsfile, "r") as inputFile:
             output_data = inputFile.readlines()
 
         centroids = []
@@ -103,19 +112,19 @@ class KmeansRunner():
             labels.append(int(cluster))
         return labels
 
-    def writeCentroids(self, centroids, file):
+    @staticmethod
+    def writeCentroids(centroids):
         """Write centroids to a file.
 
-        :param self: An instance of the class KmeansRunner.
         :param centroids: A list with the centroids.
-        :param file: A file to write the centroids.
         """
         f = open(CENTROIDS_FILE, "w+")
         for item in centroids:
             f.write("%s\n" % str(item))
         f.close()
 
-    def plotClusters(self, data_points, centroids, labels):
+    @staticmethod
+    def plotClusters(data_points, centroids, labels):
         """Plot the clusters with the centroids and save the plot as an image.
 
         :param self: An instance of the class KmeansRunner.
@@ -124,7 +133,7 @@ class KmeansRunner():
         :param labels: The labels of the input data points.
         """
         plt.scatter(data_points[:, 0], data_points[:, 1], c=labels)
-        for i in range(len(centroids)):
+        for i, _ in enumerate(centroids):
             label = "Centroid " + str(i)
             colors = ["red", "green", "blue"]
             plt.scatter(centroids[i][0], centroids[i][1], s=50,
@@ -143,7 +152,6 @@ OUTPUT_FILE = "output.txt"
 
 if __name__ == "__main__":
 
-    parser = argparse
     parser = argparse.ArgumentParser(description="k-means algorithm"
                                      " implementation on Hadoop",
                                      epilog="Go ahead and try it!")
@@ -157,7 +165,7 @@ if __name__ == "__main__":
     k = args.centroids
     instanceKmeans = KmeansRunner()
     centroids = instanceKmeans.initialCentroids(data, int(k))
-    instanceKmeans.writeCentroids(centroids, CENTROIDS_FILE)
+    instanceKmeans.writeCentroids(centroids)
 
     outputFile = open(OUTPUT_FILE, "w+")
     outputFile.close()
@@ -177,7 +185,7 @@ if __name__ == "__main__":
 
         if sorted(centroids) != sorted(new_centroids):
             centroids = new_centroids
-            instanceKmeans.writeCentroids(centroids, CENTROIDS_FILE)
+            instanceKmeans.writeCentroids(centroids)
         else:
             break
         i += 1

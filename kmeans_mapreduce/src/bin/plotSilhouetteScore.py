@@ -20,19 +20,21 @@ http://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_anal
 """
 
 import argparse
+import os
+import PIL
 from kmeans import KmeansRunner
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
-import os
-import PIL
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_samples, silhouette_score
 
 __author__ = "Scikit-Learn"
 
 
-class SilhouetteScore():
+class SilhouetteScore(object):
+    """Implement methods to plot silhouette scores.
+    """
 
     def calculateSilhouetteScore(self, dataFile):
         """Calculate the silhouette score for different numbers of clusters.

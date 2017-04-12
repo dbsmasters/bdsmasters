@@ -1,16 +1,19 @@
+# pylint: disable=invalid-name, anomalous-backslash-in-string, abstract-method
 """kmeansAlgorithm.py: Implement the k-means clustering
     algorithm on the input data."""
 
+import re
 from mrjob.job import MRJob
 from mrjob.job import MRStep
 import numpy as np
-import re
 
 __author__ = "Stratos Gounidellis, Lamprini Koutsokera"
 __copyright__ = "Copyright 2017, BDSMasters"
 
 
 class KmeansAlgorithm(MRJob):
+    """Implement required methods for kmeans algorithm on Hadoop.
+    """
     def configure_options(self):
         """Set the arguments for the class KmeansAlgorithm.
 
@@ -21,14 +24,14 @@ class KmeansAlgorithm(MRJob):
             "--k", type="int", help="Number of clusters.")
         self.add_file_option("--centroids")
 
-    def retrieveCentroids(self, file):
+    @staticmethod
+    def retrieveCentroids(centroidsFile):
         """Retrieve the centroids coordinated from the centroids file.
 
-        :param self: An instance of the class KmeansAlgorithm.
-        :param file: A file with the centroids.
+        :param centroidsFile: A file with the centroids.
         :return: A list with the centroids.
         """
-        with open(file, "r") as inputFile:
+        with open(centroidsFile, "r") as inputFile:
             output_data = inputFile.readlines()
 
         centroids = []
@@ -59,11 +62,11 @@ class KmeansAlgorithm(MRJob):
         cluster = np.argmin(distances)
         yield int(cluster), data_point.tolist()
 
-    def calculatePartialSum(self, cluster, data_points):
+    @staticmethod
+    def calculatePartialSum(cluster, data_points):
         """Calculate the partial sum of the data points belonging to
             each cluster - Combiner Function.
 
-        :param self: An instance of the class KmeansAlgorithm.
         :param cluster: An identifier for each cluster.
         :param data_points: A list of points belonging to each cluster.
         :yield: The identifier of a cluster, the partial sum of its
@@ -76,10 +79,10 @@ class KmeansAlgorithm(MRJob):
             counter += 1
         yield cluster, (sum_points.tolist(), counter)
 
-    def calculateNewCentroids(self, cluster, partial_sums):
+    @staticmethod
+    def calculateNewCentroids(cluster, partial_sums):
         """Calculate the new centroids of the clusters - Reduce Function.
 
-        :param self: An instance of the class KmeansAlgorithm.
         :param cluster: An identifier for each cluster.
         :param partial_sums: A list with the partial sum of the
             data points of a cluster and their number.
@@ -100,8 +103,8 @@ class KmeansAlgorithm(MRJob):
         :return: a list of steps constructed with MRStep().
         """
         return [MRStep(mapper=self.assignPointtoCluster,
-                combiner=self.calculatePartialSum,
-                reducer=self.calculateNewCentroids)]
+                       combiner=self.calculatePartialSum,
+                       reducer=self.calculateNewCentroids)]
 
 
 if __name__ == "__main__":

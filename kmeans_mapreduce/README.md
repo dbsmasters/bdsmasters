@@ -1,5 +1,5 @@
-<img src="images/logoAUEB.png" width="280" height="80" align="right"></img>
-<img src="images/dmst.png" width="200" height="80" align="left"></img><br><br>
+<img src="../logos/logoAUEB.png" width="280" height="80" align="right"></img>
+<img src="../logos/dmst.png" width="200" height="80" align="left"></img><br><br>
 <br><br><br>
 [![BDSMasters](https://img.shields.io/badge/codedby-bdsmasters-brightgreen.svg?style=flat-square)](https://github.com/dbsmasters)
 ![k-means MapReduce](https://img.shields.io/badge/kmeans-mapreduce-blue.svg?style=flat-square)

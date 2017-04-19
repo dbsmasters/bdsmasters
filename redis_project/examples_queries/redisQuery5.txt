@@ -1,0 +1,3 @@
+Grade.SSN, Student.FName, Student.LName
+Student, Grade
+Student.SSN=Grade.SSN and (Grade.Mark <> 8 and Grade.Mark >= 6)

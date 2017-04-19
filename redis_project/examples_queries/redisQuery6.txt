@@ -1,0 +1,3 @@
+Stu.FName, Student.Address, Student.LName
+Student, Grade
+Stu.FName asc, Student.LName desc

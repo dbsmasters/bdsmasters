@@ -1,0 +1,5 @@
+Student.FName, Student.LName, Grade.Mark
+Student, Grade
+(Student.SSN=Grade.SSN and Grade.Mark > 5) and (Student.FName='Maria' or Student.FName='Nikos')
+Grade.Mark asc
+8

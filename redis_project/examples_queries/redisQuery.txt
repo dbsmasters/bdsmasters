@@ -1,0 +1,7 @@
+Student.FName, Student.Address, Student.LName
+Student
+Student.FName < "Nikos1"
+Student.FName asc
+2
+
+

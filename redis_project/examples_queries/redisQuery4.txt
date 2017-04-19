@@ -1,0 +1,5 @@
+Student.FName, Student.LName, Student.Address
+Student
+
+RAND()
+3

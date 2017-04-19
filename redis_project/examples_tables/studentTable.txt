@@ -1,0 +1,18 @@
+Student
+SSN
+FName
+LName
+Address
+Age
+;
+12938;Nikos;Papadopoulos;Hydras 28, Athens;42
+18298;Maria;Nikolaou;Kifisias 33, Marousi;34
+12129;Dimitris;Panagiotou;Alamanas 44, Petralona;17
+13369;Lamprini;Koutsokera;Papanastasiou 42, Pagrati;22
+18135;Stratos;Gounidellis;Ilia Iliou 2, Neos Kosmos;22
+12358;Michalis;Nikolaou;Dionusou 66, Marousi;27
+13647;Giannis;Papaspurou;Patision 13, Athina;32
+15851;Eleni;Petrou;Kountouriwtou 29, Peiraias;47
+12385;Christina;Poluzou;Krustalli 32, Kifisia;35
+10036;Dimitra;Papadimitriou;Kerkuras 78, Palaio Faliro;28
+12236;Damianos;Chatziantoniou;Kolokotroni 59B, Athina;23

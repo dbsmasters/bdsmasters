@@ -16,3 +16,9 @@ The current project is implemented in the context of the course "Big Data Manage
 2. [Jupyter Notebook](redis_project/jupyter_notebook/redisProject_Notebook.html)
 3. [Presentation](redis_project/reports/redisProject_Presentation.pdf)
 4. [Report](redis_project/reports/redisProject_Report.pdf)
+
+### 3rd Assignment - Mongo Project: Relational databases & Document-Oriented databases
+1. [Assignment Description](mongo_project/Proj2_MongoDB_Description.pdf) 
+2. [Jupyter Notebook](mongo_project/jupyter_notebook/mongodbProject_Notebook.html)
+3. [Presentation](mongo_project/reports/mongodbProject_Presentation.pdf)
+4. [Report](mongo_project/reports/mongodbProject_Report.pdf)

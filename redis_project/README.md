@@ -23,6 +23,8 @@ This assignment is a part of a project implemented in the context of the course 
 
 In the context of this assignment on Redis, relational data are inserted into a redis database while sql queries are properly edited and transformed in order to retrieve information from the redis database.
 
+A detailed description of the assignment can be found [here](Proj2_Redis_Description.pdf).
+
 ### <a id="installing-redis" href="#installing-redis">Redis installation in Linux</a>
 ```shell
 wget http://download.redis.io/redis-stable.tar.gz

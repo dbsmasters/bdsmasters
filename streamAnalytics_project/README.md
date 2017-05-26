@@ -19,7 +19,7 @@ This assignment is a part of a project implemented in the context of the course 
 
 In the context of this assignment on Stream Analytics, Azure Stream Analytics will be used in order to process a data stream of ATM transactions and answer stream queries. The schema of the stream is the following: (ATMCode, CardNumber, Type, Amount).
 
-A detailed description of the assignment can be found [here](Proj4_StreamAnalytics_Description.pdf)
+A detailed description of the assignment can be found [here](Proj4_StreamAnalytics_Description.pdf).
 
 ### <a id="configuring-azure" href="#configuring-azure">Azure Stream Analytics: Configuration</a>
 

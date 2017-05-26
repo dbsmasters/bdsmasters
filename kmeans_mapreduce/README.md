@@ -20,6 +20,8 @@
 
 The aim of this project is to implement k-means clustering algorithm on Hadoop. The project is implemented in the context of the course "Big Data Management Systems" taught by Prof. Damianos Chatziantoniou. In the repository the source code of the project as well as a presentation on the main steps followed during the project can be found. 
 
+A detailed description of the assignment can be found [here]("Proj1_Hadoop_Description.pdf")
+
 ### <a id="installing-configuring-ha" href="#installing-configuring-ha">Installing & Configuring Hadoop</a>
 
 **1.** Download Hadoop from [Apache website](http://hadoop.apache.org/releases.html#25+August%2C+2016%3A+Release+2.7.3+available).

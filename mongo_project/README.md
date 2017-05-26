@@ -22,6 +22,8 @@ This assignment is a part of a project implemented in the context of the course 
 
 In the context of this assignment on Mongo, queries will be designed and executed on a mongo collection, simple operations on mongo will be executed with python while mapreduce jobs will also be designed and executed on a mongo collection.
 
+A detailed description of the assignment can be found [here](Proj3_MongoDB_Description.pdf).
+
 ### <a id="installing-mongo" href="#installing-mongo">MongoDB installation in Windows</a>
 
 1. Determine which MongoDB build you need.

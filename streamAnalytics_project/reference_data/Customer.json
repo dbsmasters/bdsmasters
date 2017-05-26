@@ -1,0 +1,162 @@
+[
+  {
+    "card_number": 5446210381593272,
+    "first_name": "Eugene",
+    "last_name": "Mason",
+    "age": 67,
+    "gender": "Male",
+    "area_code": 8
+  },
+  {
+    "card_number": 3534633361736454,
+    "first_name": "Angela",
+    "last_name": "Moreno",
+    "age": 61,
+    "gender": "Female",
+    "area_code": 7
+  },
+  {
+    "card_number": 604513436397576,
+    "first_name": "Patrick",
+    "last_name": "Lee",
+    "age": 69,
+    "gender": "Male",
+    "area_code": 2
+  },
+  {
+    "card_number": 3549670931669297,
+    "first_name": "Jose",
+    "last_name": "Snyder",
+    "age": 41,
+    "gender": "Male",
+    "area_code": 4
+  },
+  {
+    "card_number": 5602246755688900,
+    "first_name": "Bruce",
+    "last_name": "Morrison",
+    "age": 54,
+    "gender": "Male",
+    "area_code": 1
+  },
+  {
+    "card_number": 5893112367133403000,
+    "first_name": "Arthur",
+    "last_name": "Cooper",
+    "age": 72,
+    "gender": "Male",
+    "area_code": 10
+  },
+  {
+    "card_number": 3554025590595485,
+    "first_name": "Walter",
+    "last_name": "Stone",
+    "age": 27,
+    "gender": "Male",
+    "area_code": 1
+  },
+  {
+    "card_number": 50383945269330136,
+    "first_name": "Jerry",
+    "last_name": "Hansen",
+    "age": 42,
+    "gender": "Male",
+    "area_code": 6
+  },
+  {
+    "card_number": 5200253312538103,
+    "first_name": "Richard",
+    "last_name": "Russell",
+    "age": 73,
+    "gender": "Male",
+    "area_code": 1
+  },
+  {
+    "card_number": 201634601435467,
+    "first_name": "Kelly",
+    "last_name": "Simpson",
+    "age": 54,
+    "gender": "Female",
+    "area_code": 7
+  },
+  {
+    "card_number": 3583257214000023,
+    "first_name": "Ruth",
+    "last_name": "Sims",
+    "age": 61,
+    "gender": "Female",
+    "area_code": 3
+  },
+  {
+    "card_number": 5610827137784218,
+    "first_name": "Julia",
+    "last_name": "Fuller",
+    "age": 74,
+    "gender": "Female",
+    "area_code": 6
+  },
+  {
+    "card_number": 4026567514157759,
+    "first_name": "Emily",
+    "last_name": "Perry",
+    "age": 22,
+    "gender": "Female",
+    "area_code": 8
+  },
+  {
+    "card_number": 3535766537597043,
+    "first_name": "Martha",
+    "last_name": "Day",
+    "age": 32,
+    "gender": "Female",
+    "area_code": 1
+  },
+  {
+    "card_number": 50384191807294800,
+    "first_name": "Gerald",
+    "last_name": "Young",
+    "age": 23,
+    "gender": "Male",
+    "area_code": 1
+  },
+  {
+    "card_number": 3542024987623740,
+    "first_name": "Jesse",
+    "last_name": "Bradley",
+    "age": 26,
+    "gender": "Male",
+    "area_code": 7
+  },
+  {
+    "card_number": 560222217915598000,
+    "first_name": "Brenda",
+    "last_name": "Carroll",
+    "age": 65,
+    "gender": "Female",
+    "area_code": 8
+  },
+  {
+    "card_number": 30487898026193,
+    "first_name": "Kathy",
+    "last_name": "Jordan",
+    "age": 61,
+    "gender": "Female",
+    "area_code": 7
+  },
+  {
+    "card_number": 56022176913710210,
+    "first_name": "Lisa",
+    "last_name": "Perez",
+    "age": 74,
+    "gender": "Female",
+    "area_code": 2
+  },
+  {
+    "card_number": 5602238863017460,
+    "first_name": "Aaron",
+    "last_name": "Mitchell",
+    "age": 44,
+    "gender": "Male",
+    "area_code": 2
+  }
+]

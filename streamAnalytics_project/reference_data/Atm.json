@@ -1,0 +1,90 @@
+[
+  {
+    "atm_code": 1,
+    "area_code": 20
+  },
+  {
+    "atm_code": 2,
+    "area_code": 17
+  },
+  {
+    "atm_code": 3,
+    "area_code": 18
+  },
+  {
+    "atm_code": 4,
+    "area_code": 19
+  },
+  {
+    "atm_code": 5,
+    "area_code": 16
+  },
+  {
+    "atm_code": 6,
+    "area_code": 12
+  },
+  {
+    "atm_code": 7,
+    "area_code": 14
+  },
+  {
+    "atm_code": 8,
+    "area_code": 13
+  },
+  {
+    "atm_code": 9,
+    "area_code": 15
+  },
+  {
+    "atm_code": 10,
+    "area_code": 11
+  },
+  {
+    "atm_code": 11,
+    "area_code": 8
+  },
+  {
+    "atm_code": 12,
+    "area_code": 9
+  },
+  {
+    "atm_code": 13,
+    "area_code": 10
+  },
+  {
+    "atm_code": 14,
+    "area_code": 6
+  },
+  {
+    "atm_code": 15,
+    "area_code": 5
+  },
+  {
+    "atm_code": 16,
+    "area_code": 7
+  },
+  {
+    "atm_code": 17,
+    "area_code": 3
+  },
+  {
+    "atm_code": 18,
+    "area_code": 4
+  },
+  {
+    "atm_code": 19,
+    "area_code": 2
+  },
+  {
+    "atm_code": 20,
+    "area_code": 1
+  },
+  {
+    "atm_code": 21,
+    "area_code": 1
+  },
+  {
+    "atm_code": 22,
+    "area_code": 6
+  }
+]

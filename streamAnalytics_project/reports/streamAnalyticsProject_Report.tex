@@ -1,0 +1,409 @@
+\documentclass[11pt]{article}
+
+    \usepackage{tocloft}
+
+    \cftsetindents{section}{0em}{2em}
+    \cftsetindents{subsection}{0em}{2em}
+
+    \renewcommand\cfttoctitlefont{\hfill\Large\bfseries}
+    \renewcommand\cftaftertoctitle{\hfill\mbox{}}
+    \setcounter{tocdepth}{2}
+    \usepackage{listings}
+    \usepackage{color}
+    \usepackage{url}
+    \definecolor{codegreen}{rgb}{0,0.6,0}
+    \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+    \definecolor{codepurple}{rgb}{0.58,0,0.82}
+    \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+    \usepackage{algpseudocode} 
+    \usepackage{algorithm} 
+    \lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=3
+    }
+    
+    \lstset{ 
+    style=mystyle,
+    basicstyle=\small\ttfamily,
+    breaklines=true
+    }
+    \usepackage{seqsplit}    
+    \usepackage[T1]{fontenc}
+
+
+    % Nicer default font than Computer Modern for most use cases
+    \usepackage{palatino}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+\usepackage[pdftex,
+            pdfauthor={BDSMasters: Efstratios Gounidellis, Lamprini Koutsokera},
+            pdftitle={Azure Stream Analytics Project: On-demand real-time analytics},
+            pdfsubject={Big Data Management Systems},
+            pdfkeywords={stream; anlytics; python; dmst; aueb; time-window; azure},
+            pdfproducer={Latex with hyperref},
+            pdfcreator={pdflatex}]{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % command for creating lines to place the title in a box
+
+\title{
+    \horrule{0.5pt} \\ [0.4cm]
+    \huge  {Azure Stream Analytics Project: On-demand real-time analytics}\\
+    \horrule{2pt} \\[0.5cm]	
+\vspace{10px}
+}
+
+\author{\large Efstratios Gounidellis\\stratos.gounidellis [at] gmail.com \\ \\ \\ 
+		Lamprini Koutsokera\\lkoutsokera [at] gmail.com \\ \\ \\ \\ \\ \\ \\ \\
+Course: "Big Data Management Systems"
+\\
+Professor: Damianos Chatziantoniou
+\\ \\ \\
+\vspace{40px}
+Department of Management Science \& Technology
+\\ School of Business
+\\
+Athens University of Economics \& Business} % Author's name
+
+\date{
+\vfill \large\today} % Today's date    
+
+
+
+    \begin{document}
+    
+\maketitle
+
+\pagebreak 
+
+\tableofcontents
+
+\pagebreak 
+ 
+\section{Introduction}\label{introduction}
+This assignment is a part of a project implemented in the context of the course "Big Data Management Systems" taught by Prof. Chatziantoniou in the Department of Management Science and Technology (AUEB). The aim of the project is to familiarize the students with big data management systems such as Hadoop, Redis, MongoDB and Neo4j.
+\newline\newline\noindent
+In the context of this assignment on Stream Analytics, Azure Stream Analytics will be used in order to process a data stream of ATM transactions and answer stream queries. The schema of the stream is the following: (ATMCode, CardNumber, Type, Amount).
+
+\section{Azure Stream Analytics: Configuration}\label{azure-stream-analytics-configuration}
+
+In order to execute stream processes and queries on Azure Stream Analytics platform the following steps are required:
+\begin{enumerate}
+	\item Create an Azure account.
+	\item Setup an Event Hub.
+	\item Feed the Event Hub with data.
+	\item Setup a Storage account.
+	\item Upload the Reference Data files (if any).
+	\item Create a Blob Storage Output.
+	\item Setup a Stream Analytics Job.
+	\item Use the Event Hub and/or Reference Data Files as Input.
+	\item Run the queries.
+\end{enumerate}
+    
+
+\section{Azure Stream Analytics: Queries}\label{queries-execution}
+
+
+\begin{lstlisting} [language=SQL]
+/*
+    @author Stratos Gounidellis <stratos.gounidellis@gmail.com>
+    @author Lamprini Koutsokera <lkoutsokera@gmail.com>
+*/
+
+/*
+    Q1: Show the total 'Amount' of 'Type = 0' transactions at 'ATM Code = 21'
+    of the last 10 minutes. Repeat as new events keep flowing 
+    in (use a sliding window).
+*/
+SELECT
+    SUM(CAST([BDSMastersInput].[Amount] AS BIGINT)) AS TotalAmount,
+    System.Timestamp AS Time
+INTO
+    [BDSMastersOutput]
+FROM
+    [BDSMastersInput]
+WHERE CAST([BDSMastersInput].[Type] AS BIGINT) = 0 AND
+      CAST([BDSMastersInput].[ATMCode] AS BIGINT) = 21
+GROUP BY SlidingWindow(minute, 10)
+
+/*
+    Q2: Show the total 'Amount' of 'Type = 1' transactions at 'ATM Code = 21'
+    of the last hour. Repeat once every hour (use a tumbling window).
+*/
+SELECT
+    SUM(CAST([BDSMastersInput].[Amount] AS BIGINT)) AS TotalAmount,
+    System.Timestamp AS Time
+INTO
+    [BDSMastersOutput]
+FROM
+    [BDSMastersInput]
+WHERE CAST([BDSMastersInput].[Type] AS BIGINT) = 1 AND
+      CAST([BDSMastersInput].[ATMCode] AS BIGINT) = 21
+GROUP BY TumblingWindow(hour, 1)
+
+/*
+    Q3: Show the total 'Amount' of 'Type = 1' transactions at 'ATM Code = 21'
+    of the last hour. Repeat once every 30 minutes (use a hopping window).
+*/
+SELECT
+    SUM(CAST([BDSMastersInput].[Amount] AS BIGINT)) AS TotalAmount,
+    System.Timestamp AS Time
+INTO
+    [BDSMastersOutput]
+FROM
+    [BDSMastersInput]
+WHERE CAST([BDSMastersInput].[Type] AS BIGINT) = 1 AND 
+      CAST([BDSMastersInput].[ATMCode] AS BIGINT) = 21
+GROUP BY HoppingWindow(minute, 60, 30)
+
+/*
+    Q4: Show the total 'Amount' of 'Type = 1' transactions per 'ATM Code'
+    of the last one hour (use a sliding window).
+*/
+SELECT
+    CAST([BDSMastersInput].[ATMCode] AS BIGINT) AS AtmCode,
+    SUM(CAST([BDSMastersInput].[Amount] AS BIGINT)) AS TotalAmount,
+    System.Timestamp AS Time
+INTO
+    [BDSMastersOutput]
+FROM
+    [BDSMastersInput]
+WHERE CAST([BDSMastersInput].[Type] AS BIGINT) = 1
+GROUP BY CAST([BDSMastersInput].[ATMCode] AS BIGINT), 
+         SlidingWindow(hour, 1)
+
+/*
+    Q5: Show the total 'Amount' of 'Type = 1' transactions per 'Area Code'
+    of the last hour. Repeat once every hour (use a tumbling window).
+*/
+SELECT
+    CAST([atmRef].[area_code] AS BIGINT) AS AreaCode,
+    SUM(CAST([BDSMastersInput].[Amount] AS BIGINT)) AS TotalAmount,
+    System.Timestamp AS Time
+INTO
+    [BDSMastersOutput]
+FROM
+    [BDSMastersInput]
+INNER JOIN [atmRef]
+    ON CAST([atmRef].[atm_code] AS BIGINT) = CAST([BDSMastersInput].[atmCode] AS BIGINT)
+WHERE CAST([BDSMastersInput].[Type] AS BIGINT) = 1
+GROUP BY CAST([atmRef].[area_code] AS BIGINT), 
+         TumblingWindow(hour, 1)
+
+/*
+    Q6: Show the total 'Amount' per ATM's 'City' and Customer's 'Gender' 
+    of the last hour. Repeat once every hour (use a tumbling window).
+*/
+SELECT
+    [areaRef].[area_city] AS City,
+    [customerRef].[gender] AS Gender,
+    SUM(CAST([BDSMastersInput].[Amount] AS BIGINT)) AS TotalAmount,
+    System.Timestamp AS Time
+INTO
+    [BDSMastersOutput]
+FROM
+    [BDSMastersInput]
+INNER JOIN [customerRef]
+    ON CAST([customerRef].[card_number] AS BIGINT) = CAST([BDSMastersInput].[CardNumber] AS BIGINT)
+INNER JOIN [atmRef]
+    ON CAST([atmRef].[atm_code] AS BIGINT) = CAST([BDSMastersInput].[ATMCode] AS BIGINT)
+INNER JOIN [areaRef]
+    ON CAST([areaRef].[area_code] AS BIGINT) = CAST([atmRef].[area_code] AS BIGINT)
+GROUP BY [areaRef].[area_city],
+         [customerRef].[gender],
+         TumblingWindow(hour, 1)
+
+/*
+    Q7: Alert (SELECT '1') if a Customer has performed two transactions
+    of 'Type = 1' in a window of an hour (use a sliding window).
+*/
+SELECT
+    [customerRef].[first_name] AS Name,
+    [customerRef].[last_name] AS Surname,
+    CAST([BDSMastersInput].[CardNumber] AS BIGINT) AS CardNo,
+    COUNT (*) AS Transactions,
+    System.Timestamp AS Time
+INTO
+    [BDSMastersOutput]
+FROM
+    [BDSMastersInput]
+INNER JOIN [customerRef]
+    ON CAST([customerRef].[card_number] AS BIGINT) = CAST([BDSMastersInput].[CardNumber] AS BIGINT)
+WHERE CAST([BDSMastersInput].[Type] AS BIGINT) = 1
+GROUP BY [customerRef].[first_name],
+         [customerRef].[last_name],
+         CAST([BDSMastersInput].[CardNumber] AS BIGINT),
+         SlidingWindow(hour, 1)
+HAVING Transactions = 2
+
+/*
+    Q8: Alert (SELECT '1') if the 'Area Code' of the ATM of the transaction 
+    is not the same as the 'Area Code' of the 'Card Number' 
+    (Customer's Area Code) - (use a sliding window).
+*/
+SELECT
+    CAST([atmRef].[area_code] AS BIGINT) AS AtmAreaCode,
+    CAST([customerRef].[area_code] AS BIGINT) AS CustomerAreaCode,
+    COUNT (*),
+    System.Timestamp AS Time
+INTO
+    [BDSMastersOutput]
+FROM
+    [BDSMastersInput]
+INNER JOIN [customerRef]
+    ON CAST([customerRef].[card_number] AS BIGINT) = CAST([BDSMastersInput].[CardNumber] AS BIGINT)
+INNER JOIN [atmRef]
+    ON CAST([atmRef].[atm_code] AS BIGINT) = CAST([BDSMastersInput].[ATMCode] AS BIGINT)
+WHERE CAST([atmRef].[area_code] AS BIGINT) != CAST([customerRef].[area_code] AS BIGINT)
+GROUP BY CAST([atmRef].[area_code] AS BIGINT),
+         CAST([customerRef].[area_code] AS BIGINT), 
+         SlidingWindow(hour, 1)
+
+\end{lstlisting}
+
+\end{document}

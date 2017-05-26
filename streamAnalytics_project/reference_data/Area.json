@@ -1,0 +1,52 @@
+[
+  {
+    "area_code": 1,
+    "area_country": "United States",
+    "area_city": "Springfield"
+  },
+  {
+    "area_code": 2,
+    "area_country": "United States",
+    "area_city": "Omaha"
+  },
+  {
+    "area_code": 3,
+    "area_country": "United States",
+    "area_city": "Vancouver"
+  },
+  {
+    "area_code": 4,
+    "area_country": "United States",
+    "area_city": "Memphis"
+  },
+  {
+    "area_code": 5,
+    "area_country": "United States",
+    "area_city": "Schaumburg"
+  },
+  {
+    "area_code": 6,
+    "area_country": "United States",
+    "area_city": "Dayton"
+  },
+  {
+    "area_code": 7,
+    "area_country": "United States",
+    "area_city": "Tacoma"
+  },
+  {
+    "area_code": 8,
+    "area_country": "United States",
+    "area_city": "Greeley"
+  },
+  {
+    "area_code": 9,
+    "area_country": "United States",
+    "area_city": "Canton"
+  },
+  {
+    "area_code": 10,
+    "area_country": "United States",
+    "area_city": "Baltimore"
+  }
+]

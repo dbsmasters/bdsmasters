@@ -1,0 +1,93 @@
+<html>
+<head>
+    <script src="js/lodash.js"></script>
+</head>
+<body>
+<input type="button" value="Send Data" onclick="sendDummyData()" />  
+<div id="status" style="display: inline-block;"></div>  
+<script type="text/javascript">  
+function sendDummyData() {
+
+  /**************/
+  /*** CONFIG ***/
+  /**************/
+
+  //Use the signature generator: https://github.com/sandrinodimattia/RedDog/releases
+  var sas = "SharedAccessSignature sr=https%3a%2f%2fbdsmasters.servicebus.windows.net%2feventhubbdsmasters%2fpublishers%2flaptop%2fmessages&sig=%2bodltpkLnFX32W7zhq2hZ35Gf1rcxtyOKIUfhvpSMOw%3d&se=1497798957&skn=BDSMastersSend";
+  var serviceNamespace = "bdsmasters";
+  var hubName = "eventhubbdsmasters";
+  var deviceName = "Laptop";
+
+  /*****************/
+  /*** GENERATOR ***/
+  /*****************/
+  var atms = [{"atm_code":1,"area_code":20},{"atm_code":2,"area_code":17},{"atm_code":3,"area_code":18},{"atm_code":4,"area_code":19},{"atm_code":5,"area_code":16},{"atm_code":6,"area_code":12},{"atm_code":7,"area_code":14},{"atm_code":8,"area_code":13},{"atm_code":9,"area_code":15},{"atm_code":10,"area_code":11},{"atm_code":11,"area_code":8},{"atm_code":12,"area_code":9},{"atm_code":13,"area_code":10},{"atm_code":14,"area_code":6},{"atm_code":15,"area_code":5},{"atm_code":16,"area_code":7},{"atm_code":17,"area_code":3},{"atm_code":18,"area_code":4},{"atm_code":19,"area_code":2},{"atm_code":20,"area_code":1},{"atm_code":21,"area_code":1},{"atm_code":22,"area_code":6}];
+
+  var customers = [{"card_number":5446210381593272,"first_name":"Eugene","last_name":"Mason","age":67,"gender":"Male","area_code":8},{"card_number":3534633361736454,"first_name":"Angela","last_name":"Moreno","age":61,"gender":"Female","area_code":7},{"card_number":604513436397576,"first_name":"Patrick","last_name":"Lee","age":69,"gender":"Male","area_code":2},{"card_number":3549670931669297,"first_name":"Jose","last_name":"Snyder","age":41,"gender":"Male","area_code":4},{"card_number":5602246755688900,"first_name":"Bruce","last_name":"Morrison","age":54,"gender":"Male","area_code":1},{"card_number":5893112367133403000,"first_name":"Arthur","last_name":"Cooper","age":72,"gender":"Male","area_code":10},{"card_number":3554025590595485,"first_name":"Walter","last_name":"Stone","age":27,"gender":"Male","area_code":1},{"card_number":50383945269330136,"first_name":"Jerry","last_name":"Hansen","age":42,"gender":"Male","area_code":6},{"card_number":5200253312538103,"first_name":"Richard","last_name":"Russell","age":73,"gender":"Male","area_code":1},{"card_number":201634601435467,"first_name":"Kelly","last_name":"Simpson","age":54,"gender":"Female","area_code":7},{"card_number":3583257214000023,"first_name":"Ruth","last_name":"Sims","age":61,"gender":"Female","area_code":3},{"card_number":5610827137784218,"first_name":"Julia","last_name":"Fuller","age":74,"gender":"Female","area_code":6},{"card_number":4026567514157759,"first_name":"Emily","last_name":"Perry","age":22,"gender":"Female","area_code":8},{"card_number":3535766537597043,"first_name":"Martha","last_name":"Day","age":32,"gender":"Female","area_code":1},{"card_number":50384191807294800,"first_name":"Gerald","last_name":"Young","age":23,"gender":"Male","area_code":1},{"card_number":3542024987623740,"first_name":"Jesse","last_name":"Bradley","age":26,"gender":"Male","area_code":7},{"card_number":560222217915598000,"first_name":"Brenda","last_name":"Carroll","age":65,"gender":"Female","area_code":8},{"card_number":30487898026193,"first_name":"Kathy","last_name":"Jordan","age":61,"gender":"Female","area_code":7},{"card_number":56022176913710210,"first_name":"Lisa","last_name":"Perez","age":74,"gender":"Female","area_code":2},{"card_number":5602238863017460,"first_name":"Aaron","last_name":"Mitchell","age":44,"gender":"Male","area_code":2}];
+
+  var jsonData;
+
+  var RND_Customer    = 0;
+  var RND_ATMCode     = 0;
+  var RND_CardNumber  = 0;
+  var RND_Type        = 0;
+  var RND_Amount      = 0;
+
+  setInterval(function(){ 
+
+    RND_Customer = _.random(0,19);
+
+    if( _.random(0,1) == 1 ) {
+
+      RND_ATMCode = _.findIndex(
+                        atms, 
+                        { "area_code": customers[RND_Customer]["area_code"] }
+                      );
+
+    } else if( _.random(0,20) == 10 ){
+
+      RND_ATMCode = _.random(1,22);
+
+    } else {
+
+      RND_ATMCode = _.findLastIndex(
+                        atms, 
+                        { "area_code": customers[RND_Customer]["area_code"] }
+                      );
+
+    }
+
+    RND_CardNumber  = customers[RND_Customer]["card_number"];
+    RND_Type        = _.random(0,1);
+    RND_Amount      = _.random(10,50);
+
+    jsonData = '{ "ATMCode": ' + RND_ATMCode + ' , "CardNumber": ' + RND_CardNumber + ' , "Type": ' + RND_Type + ' , "Amount": ' + RND_Amount + ' }';
+
+    var xmlHttpRequest = new XMLHttpRequest();
+    xmlHttpRequest.open("POST", "https://" +
+        serviceNamespace + ".servicebus.windows.net/" + hubName + "/publishers/" + deviceName + "/messages", true);
+    xmlHttpRequest.setRequestHeader('Content-Type',
+        "application/atom+xml;type=entry;charset=utf-8");
+    xmlHttpRequest.setRequestHeader("Authorization", sas);
+
+    xmlHttpRequest.onreadystatechange = function () {
+        if (this.readyState == 4) {
+
+            if (this.status == 201) {
+                document.getElementById('status').innerHTML =
+                    'Sent: ' + jsonData;
+            } else {
+                document.getElementById('status').innerHTML =
+                    this.status;
+            }
+        }
+    };
+
+    xmlHttpRequest.send(jsonData); 
+
+  }, 1000);
+
+}
+</script>
+</body>
+</html>

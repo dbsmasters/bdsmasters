@@ -22,3 +22,9 @@ The current project is implemented in the context of the course "Big Data Manage
 2. [Jupyter Notebook](mongo_project/jupyter_notebook/mongodbProject_Notebook.html)
 3. [Presentation](mongo_project/reports/mongodbProject_Presentation.pdf)
 4. [Report](mongo_project/reports/mongodbProject_Report.pdf)
+
+### 4th Assignment - Azure Stream Analytics Project: On-demand real-time analytics
+1. [Assignment Description](streamAnalytics_project/Proj4_StreamAnalytics_Description.pdf) 
+2. [Jupyter Notebook](streamAnalytics_project/jupyter_notebook/streamAnalyticsProject_Notebook.html)
+3. [Presentation](streamAnalytics_project/reports/streamAnalyticsProject_Presentation.pdf)
+4. [Report](streamAnalytics_project/reports/streamAnalyticsProject_Report.pdf)
